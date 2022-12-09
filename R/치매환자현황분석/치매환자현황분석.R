@@ -30,7 +30,11 @@ library(ggplot2)
 # 거주지역별 치매환자 그래프
 qplot(거주지역, data=df, fill=거주지역)+
   ggtitle("거주지역별 치매환자")
-  # theme(plot.title = element_text(hjust = 0.5, ))
+  theme(plot.title = element_text(hjust = 0.5, size = 20, face = 'bold'))
+
+# 날짜 형식 변환  
+class(df$진단일자)
+df$진단일자 <- as.Date(df$진단일자) 
 
 # 진단일수를 계산하고 평균 진단일수 산출
 head(df)
@@ -76,3 +80,22 @@ df$나이대 <- paste(ifelse((df$나이%/%10)*10>=100,90,(df$나이%/%10)*10), "
 
 #나이대로 시각화
 barplot(table(df$나이대))
+
+
+##빈도표
+# 거주지역별 치매환자 빈도표
+table(df$거주지역)
+table(df$성별)
+tb1 <- table(df$거주지역, df$성별)
+tb1
+
+# tb1은 테이블 형태
+class(tb1)
+
+# tb1을  데이터프레임형태로 형변환
+tb1 <- as.data.frame(tb1)
+
+# 시각화
+qplot(Var1, Freq, data=tb1, fill=Var2)+
+  ggtitle("거주지역별 치매환자")
+  theme(plot.title = element_text(hjust = 0.5, size = 20, face = 'bold'))
