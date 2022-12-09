@@ -40,6 +40,8 @@ df$진단일자 <- as.Date(df$진단일자)
 head(df)
 df$진단일수 <- difftime(df$데이터기준일자, df$진단일자, units='days')
 
+df$진단일수 <- as.numeric(df$진단일수)
+
 # 연령대별 빈도수 그래프를 그려서 치매환자가 많은 연령대 분석
 # year()함수 사용을 위한패키지
 install.packages('lubridate')
@@ -76,6 +78,7 @@ qplot(연령대, data=df, fill=연령대)+
 df$나이대 <- paste((df$나이%/%10)*10, "대", sep="")
 
 # 100세 이상은 90대에 넣음
+subset(df, df$나이대 == "100대")
 df$나이대 <- paste(ifelse((df$나이%/%10)*10>=100,90,(df$나이%/%10)*10), "대", sep="")
 
 #나이대로 시각화
