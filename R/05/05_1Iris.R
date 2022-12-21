@@ -108,6 +108,3 @@ acc3 <- (t3[1,1] + t3[2,2] + t3[3,3]) / sum(t3)
 acc1
 acc2
 acc3
-
-#iris data 저장
- 
