@@ -98,11 +98,3 @@ t
 acc <- (t[1,1] + t[2,2]) /sum(t)
 acc
 
-
- 
-
-#혼돈행렬
- 
- 
-#accuracy
- 
