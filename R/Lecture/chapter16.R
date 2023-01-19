@@ -86,7 +86,7 @@ plot(hc, hang = -1)
 ghc <- cutree(hc, k = 3)
 ghc
 
-# 단계 3: iris 데이터 셋에 ghc 칼러 ㅁ추가 
+# 단계 3: iris 데이터 셋에 ghc 칼럼추가 
 iris$ghc <- ghc
 table(iris$ghc)
 head(iris)
