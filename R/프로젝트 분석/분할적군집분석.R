@@ -15,7 +15,7 @@ head(data)
 names(data)
 
 # 필요 칼럼만 호출
-data <- data[c("평균운행속도", "최고속도", "급가속건수", "급출발건수", "급감속건수", "급좌회전건수") ]
+data <- data[c("급좌회전건수", "급우회전건수", "급진로변경건수") ]
 data$평균운행속도 <- as.numeric(data$평균운행속도)
 
 # 데이터 확인
@@ -33,17 +33,14 @@ hc
 plot(hc, hang = -1)
 
 # 단계 5: 군집 단위 테두리 생성
-rect.hclust(hc, k = 6, border ="red")
-
-
-
+rect.hclust(hc, k = 4, border ="red")
 
 summary(idist)
-### 단계 3: 비계층적 군집분석
-result <- kmeans(data, 3)
-names(result)
-str(data)
-result$cluster
+# ### 단계 3: 비계층적 군집분석
+# result <- kmeans(data, 3)
+# names(result)
+# str(data)
+# result$cluster
 
 # 변수 간의 상관계수 보기 
 cor(data, method = "pearson")
@@ -51,7 +48,7 @@ cor(data, method = "pearson")
 ### 단계 4: 군집분석 시각화
 plot(result, hang = -1)
 
-plot(data$평균운행속도, data$급좌회전건수, col = result$cluster)
+plot(data$급우회전건수, data$급진로변경건수, col = result$cluster)
 
 ### 단계 5: 군집 단위 테두리 생성
-rect.hclust(result, k = 1, border ="red")
+rect.hclust(result, k = 2, border ="red")
