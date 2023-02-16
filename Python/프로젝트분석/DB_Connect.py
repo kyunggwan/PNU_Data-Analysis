@@ -1,22 +1,10 @@
-# #### 5. weather 테이블
-
-# In[1]:
-
-
 import pandas as pd
 import pymysql
 
 
-# In[2]:
-
-
-## 날씨정보
+## 정보
 weather = pd.read_csv('./car.csv', encoding = 'cp949')
 weather.reset_index(drop = True)
-
-
-# In[3]:
-
 
 # 컬럼 리스트 생성
 car_num = weather.iloc[:,0].to_list()
